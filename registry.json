@@ -1,0 +1,37 @@
+{
+  "enginemcp": {
+    "name": "EngineMCP",
+    "description": "Model Context Protocol server implementation with multi-provider support for n8n, Automattic MCP, and emzimmer integrations",
+    "version": "1.0.0",
+    "repository": "jadenblack/pwp-engine",
+    "branch": "main",
+    "path": "submodules/enginemcp",
+    "dependencies": [],
+    "category": "mcp",
+    "tags": ["mcp", "ai", "automation", "n8n", "automattic", "emzimmer"],
+    "requirements": {
+      "php": ">=7.4",
+      "wordpress": ">=5.9"
+    }
+  },
+  "engineforms": {
+    "name": "EngineForms",
+    "description": "Advanced form builder and management system",
+    "version": "1.0.0",
+    "repository": "jadenblack/engineforms-submodule",
+    "branch": "main",
+    "dependencies": [],
+    "category": "forms",
+    "tags": ["forms", "builder", "submissions"]
+  },
+  "enginesecurity": {
+    "name": "EngineSecurity",
+    "description": "Enterprise security and monitoring suite",
+    "version": "1.0.0",
+    "repository": "jadenblack/enginesecurity-submodule",
+    "branch": "main",
+    "dependencies": [],
+    "category": "security",
+    "tags": ["security", "monitoring", "firewall"]
+  }
+}

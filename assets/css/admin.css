@@ -1,0 +1,127 @@
+/* PilotWP Admin Styles */
+.pilotwp-dashboard {
+    max-width: 1200px;
+}
+
+.pilotwp-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.pilotwp-submodule {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.pilotwp-submodule.active {
+    border-color: #00a32a;
+    background-color: #f0f9ff;
+}
+
+.pilotwp-submodule-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.pilotwp-submodule-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.pilotwp-submodule-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.pilotwp-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f7f7f7;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.pilotwp-btn:hover {
+    background: #fafafa;
+    border-color: #999;
+}
+
+.pilotwp-btn.primary {
+    background: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+}
+
+.pilotwp-btn.primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+}
+
+.pilotwp-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* EngineMCP specific styles */
+.enginemcp-panel {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.enginemcp-tool {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.enginemcp-tool:last-child {
+    border-bottom: none;
+}
+
+.enginemcp-provider {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.enginemcp-provider.enabled {
+    border-color: #00a32a;
+    background: #f6fff6;
+}
+
+.enginemcp-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.enginemcp-status.active {
+    background: #00a32a;
+    color: #fff;
+}
+
+.enginemcp-status.inactive {
+    background: #ddd;
+    color: #666;
+}
