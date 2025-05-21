@@ -1,0 +1,27 @@
+{
+    "id": "enginemcp",
+    "name": "EngineMCP",
+    "version": "1.0.0",
+    "description": "Model Context Protocol server implementation with multi-provider support for n8n, Automattic MCP, and emzimmer integrations",
+    "repository": "jadenblack/pwp-engine",
+    "path": "submodules/enginemcp",
+    "installed_at": null,
+    "dependencies": [],
+    "category": "mcp",
+    "tags": ["mcp", "ai", "automation", "n8n", "automattic", "emzimmer"],
+    "requirements": {
+        "php": ">=7.4",
+        "wordpress": ">=5.9"
+    },
+    "providers": [
+        "wp_core",
+        "automattic",
+        "emzimmer", 
+        "n8n"
+    ],
+    "endpoints": {
+        "json_rpc": "/wp-json/enginemcp/v1/rpc",
+        "tools": "/wp-json/enginemcp/v1/tools",
+        "providers": "/wp-json/enginemcp/v1/providers"
+    }
+}
