@@ -1,28 +1,90 @@
 {
-    "name": "pilotwp/pwp-engine",
-    "description": "Enterprise-grade WordPress enhancement platform with submodule support",
+    "name": "jadenblack/pwp-engine",
+    "description": "Enterprise-grade WordPress enhancement platform with submodule support for forms, security, MCP servers, and n8n integration",
     "type": "wordpress-plugin",
+    "keywords": ["wordpress", "plugin", "mcp", "ai", "automation", "n8n"],
+    "homepage": "https://github.com/jadenblack/pwp-engine",
     "license": "GPL-3.0+",
     "authors": [
         {
-            "name": "PilotWP Team",
-            "homepage": "https://github.com/pilotwp"
+            "name": "Jaden Black",
+            "email": "github@jadenblack.com",
+            "homepage": "https://jadenblack.com"
         }
     ],
-    "require": {
-        "php": ">=7.4",
-        "guzzlehttp/guzzle": "^7.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "PilotWP\\": "includes/"
-        }
-    },
     "support": {
         "issues": "https://github.com/jadenblack/pwp-engine/issues",
         "source": "https://github.com/jadenblack/pwp-engine"
     },
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^1.0 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
     "extra": {
-        "wordpress-install-dir": "wp-content/plugins/pwp-engine"
+        "installer-name": "pilotwp",
+        "installer-paths": {
+            "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "wp-content/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "PilotWP\\": "includes/",
+            "PilotWP\\EngineMCP\\": "submodules/enginemcp/includes/"
+        },
+        "files": [
+            "includes/core-functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PilotWP\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@setup-dev-environment"
+        ],
+        "post-update-cmd": [
+            "@setup-dev-environment"
+        ],
+        "setup-dev-environment": [
+            "echo 'Setting up PilotWP development environment...'",
+            "@install-git-hooks"
+        ],
+        "install-git-hooks": [
+            "echo 'Installing Git hooks...'",
+            "cp .githooks/pre-commit .git/hooks/pre-commit",
+            "chmod +x .git/hooks/pre-commit"
+        ],
+        "test": [
+            "phpunit"
+        ],
+        "lint": [
+            "phpcs --standard=WordPress --extensions=php --ignore=*/vendor/*,*/node_modules/* ."
+        ],
+        "lint-fix": [
+            "phpcbf --standard=WordPress --extensions=php --ignore=*/vendor/*,*/node_modules/* ."
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
     }
 }
