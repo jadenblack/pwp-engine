@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# PilotWP Pre-commit Hook
+# Runs code quality checks before commits
+
+echo "🔍 Running PilotWP pre-commit checks..."
+
+# Check for PHP syntax errors
+echo "📝 Checking PHP syntax..."
+find . -name "*.php" -not -path "./vendor/*" -not -path "./node_modules/*" | xargs -I {} php -l {} >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "❌ PHP syntax errors found. Please fix before committing."
+    exit 1
+fi
+
+# Run PHP CodeSniffer (if available)
+if command -v phpcs &> /dev/null; then
+    echo "🧹 Running PHP CodeSniffer..."
+    phpcs --standard=WordPress --extensions=php --ignore=*/vendor/*,*/node_modules/* . --report=summary
+    if [ $? -ne 0 ]; then
+        echo "⚠️  Code style issues found. Run 'composer lint-fix' to auto-fix."
+        # Don't exit - allow commit but warn
+    fi
+fi
+
+# Check for debugging statements
+echo "🐛 Checking for debugging statements..."
+if grep -r --include="*.php" -E "(var_dump|print_r|error_log.*\\\$|console\.log)" . --exclude-dir=vendor --exclude-dir=node_modules; then
+    echo "⚠️  Debugging statements found. Consider removing before commit."
+    # Don't exit - allow commit but warn
+fi
+
+echo "✅ Pre-commit checks completed!"
+exit 0
