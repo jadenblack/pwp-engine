@@ -40,10 +40,10 @@
         }
     },
     "autoload": {
-        "psr-4": {
-            "PilotWP\\": "includes/",
-            "PilotWP\\EngineMCP\\": "submodules/enginemcp/includes/"
-        },
+        "classmap": [
+            "includes/",
+            "submodules/"
+        ],
         "files": [
             "includes/core-functions.php"
         ]
@@ -66,8 +66,7 @@
         ],
         "install-git-hooks": [
             "echo 'Installing Git hooks...'",
-            "cp .githooks/pre-commit .git/hooks/pre-commit",
-            "chmod +x .git/hooks/pre-commit"
+            "if [ -f .githooks/pre-commit ]; then cp .githooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit; fi"
         ],
         "test": [
             "phpunit"
